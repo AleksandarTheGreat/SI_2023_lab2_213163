@@ -15,7 +15,8 @@ e razlikata megu brojot na granki i brojot na teminja: 32 - 26 = 6 + 2 = 8
 # Multiple Condition 
 if (user==null || user.getPassword()==null || user.getEmail()==null)
 
-Imame 8 test sluchaevi, toa se:
+Imame 8 test sluchaevi
+Vo site ovie test sluchaevi ke se frli iskluchok osven vo prviot.
 
 1: Site tri uslovi se false;
   - user != null
@@ -55,4 +56,24 @@ Imame 8 test sluchaevi, toa se:
 8: Site se true.
   - user == null
   - user.getPassword() == null
-  - user.getEmail() == nul
+  - user.getEmail() == null
+
+# Every Branch
+Za ovaj uslov
+if (user==null || user.getPassword()==null || user.getEmail()==null)
+  - ako se e null ke frlime iskluchok, inaku prodolzhuvame ponatamu na
+
+if (user.getUsername()==null)
+  - mu stavame default username = email
+
+if (user.getEmail().contains("@") && user.getEmail().contains("."))
+  - dokolku dvete se true, vlegvame vo for ciklus i proveruvame dva novi uslovi a tie se:
+  - if (existingUser.getEmail() == user.getEmail())  
+    - se zgolemuva same za 1
+  - if (existingUser.getUsername() == user.getUsername())
+    - se namaluva same za 1
+    
+if (passwordLower.contains(user.getUsername().toLowerCase()) || password.length()<8)
+  - imame return false i tuka zavrshuva funkcijata, a ako ne e ispolent ovaj uslov odime vo else delot
+    kade shto ima for ciklus i vo nego ima uslov za proverka
+    if (password.contains(String.valueOf(specialCharacters.charAt(i))))
